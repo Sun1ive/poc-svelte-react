@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import "./App.css";
 import { Input } from "./Input";
 import { Keyboard } from "./Keyboard";
@@ -7,18 +7,6 @@ function App() {
   const [text, setState] = useState("");
 
   const nodes = useMemo(() => text.split(/(\s|&nbsp;)/g), [text]);
-
-  useEffect(() => {
-    const handle = (e) => {
-      const { key } = e;
-      setState((v) => v + key);
-    };
-
-    window.addEventListener("keydown", handle);
-    return () => {
-      window.removeEventListener("keydown", handle);
-    };
-  }, []);
 
   return (
     <div className="App">
@@ -36,7 +24,7 @@ function App() {
         ))}
       </div>
       <hr />
-      <Keyboard />
+      <Keyboard callback={setState} />
     </div>
   );
 }
