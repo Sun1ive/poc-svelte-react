@@ -1,0 +1,11 @@
+.App {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+.container.node {
+  height: 50px;
+  border: 1px solid black;
+  overflow: hidden;
+}
